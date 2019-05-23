@@ -1,0 +1,15 @@
+<view class="login_wrapper">
+  <button 
+    class="login_btn" 
+    type="primary" 
+    wx:if="{{!user}}" 
+    bindgetuserinfo="userLogin" 
+    open-type="getUserInfo">Login
+  </button>
+  <button
+    class="login_btn"
+    type="warn"
+    wx:if="{{user}}"
+    bindtap="userLogout">Logout
+  </button>
+</view>
