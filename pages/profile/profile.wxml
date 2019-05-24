@@ -1,10 +1,38 @@
-<view class="profile_wrapper">
-  <view class="profile_background-img">
-    <view class="profile_user-img" style="background-image: url('{{currentUser.avatar}}')"></view>
-  </view>
+<view class="profile_wrapper" style="background-image: url({{profile.background}})">
+  <view class="profile_user-img" style="background-image: url({{profile.avatar}})"></view>
   <view class="profile_info-container">
-    <view class="profile_user-name">{{currentUser.nickname}}</view>
-    <view class="profile_user-title">Digital Strategist</view>
+    <van-cell-group title="Personal Information">
+      <van-cell title="Name" value="{{profile.name || noInfo}}" />
+      <van-cell title="Title" value="{{profile.title || noInfo}}" />
+      <van-cell title="Location" value="{{profile.location || noInfo}}" />
+      <van-cell title="Phone" value="{{profile.phone || noInfo}}" />
+      <van-cell title="Email" value="{{profile.email || noInfo}}" />
+      <van-cell title="WeChat" value="{{profile.wechat || noInfo}}" />
+    </van-cell-group>
   </view>
-  <button class="profile_edit-btn" type="default" bindtap="navigateToEdit">Edit Profile</button>
+
+  <view wx:for="{{experience}}" wx:key="{{experience.id}}" class="profile_info-container">
+    <van-cell-group title="Professional">
+      <van-cell title="Company Name" value="{{item.company_name || noInfo}}" />
+      <van-cell title="Position" value="{{item.position || noInfo}}" />
+      <van-cell title="Position" value="{{item.position || noInfo}}" />
+      <van-cell title="Start Date" value="{{item.start_date || noInfo}}" />
+      <van-cell title="End Date" value="{{item.end_date || noInfo}}" />
+      <van-cell title="Description" value="{{item.description || noInfo}}" />
+    </van-cell-group>
+  </view>
+
+  <view wx:for="{{education}}" wx:key="{{education.id}}" class="profile_info-container">
+    <van-cell-group title="Professional">
+      <van-cell title="Company Name" value="{{item.company_name || noInfo}}" />
+      <van-cell title="Position" value="{{item.position || noInfo}}" />
+      <van-cell title="Position" value="{{item.position || noInfo}}" />
+      <van-cell title="Start Date" value="{{item.start_date || noInfo}}" />
+      <van-cell title="End Date" value="{{item.end_date || noInfo}}" />
+      <van-cell title="Description" value="{{item.description || noInfo}}" />
+    </van-cell-group>
+  </view>
+
+  <van-button bindtap="navigateToEdit" type="default" custom-class="profile_edit-btn">Edit Profile</van-button>
+
 </view>

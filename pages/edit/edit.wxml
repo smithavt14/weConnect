@@ -1,1 +1,105 @@
-<view>This is an edit.</view>
+<view 
+class="edit_wrapper" 
+style="background-image: url({{profile.background}})">
+  <view 
+  class="edit_user-img" 
+  style="background-image: url({{profile.avatar}})">
+  </view>
+
+  <view class="edit_info-container">
+    <view class="edit_info-container-title">Personal Information</view>
+    <van-cell-group>
+      <van-field
+        label="Name"
+        value="{{profile.name}}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Title"
+        value="{{ profile.title }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Location"
+        value="{{ profile.location }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Phone"
+        type="digit"
+        value="{{ profile.phone }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Email"
+        value="{{ profile.email }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="WeChat"
+        value="{{ profile.wechat }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Bio"
+        fixed="true"
+        type="textarea"
+        value="{{ profile.bio }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+    </van-cell-group>
+  </view>
+
+  <view 
+  wx:for="{{experience}}" 
+  wx:key="{{experience.id}}" 
+  class="edit_info-container">
+    <view class="edit_info-container-title">Experience</view>
+    <van-cell-group>
+      <van-field
+        label="Company Name"
+        value="{{experience.company_name}}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Position"
+        value="{{ experience.position }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Start Date"
+        value="{{ experience.start_date }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="End Date"
+        value="{{ experience.end_date }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+      <van-field
+        label="Description"
+        type="textarea"
+        value="{{ experience.description }}"
+        placeholder="Insert information here"
+        bind:change="onChange"
+      />
+    </van-cell-group>
+  </view>
+
+  <van-button 
+  bindtap="addNewExperience" 
+  type="default" 
+  custom-class="edit_add-btn">Add New Experience</van-button>
+
+</view>
