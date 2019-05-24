@@ -1,0 +1,10 @@
+<view class="profile_wrapper">
+  <view class="profile_background-img">
+    <view class="profile_user-img" style="background-image: url('{{currentUser.avatar}}')"></view>
+  </view>
+  <view class="profile_info-container">
+    <view class="profile_user-name">{{currentUser.nickname}}</view>
+    <view class="profile_user-title">Digital Strategist</view>
+  </view>
+  <button class="profile_edit-btn" type="default" bindtap="navigateToEdit">Edit Profile</button>
+</view>

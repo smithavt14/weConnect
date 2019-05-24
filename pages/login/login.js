@@ -14,6 +14,9 @@ Page({
         self.setData({
           user: res.data
         })
+        wx.navigateTo({
+          url: '/pages/profile/profile'
+        })
       }, 
       fail: function (err) {
         console.log(err)

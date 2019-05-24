@@ -1,4 +1,5 @@
 App({
+  
   onLaunch: function () {
     wx.BaaS = requirePlugin('sdkPlugin')
     //让插件帮助完成登录、支付等功能
@@ -11,7 +12,6 @@ App({
     wx.BaaS.init(clientID, { autoLogin: true })
 
     wx.BaaS.auth.getCurrentUser().then(user => {
-      console.log(user)
       wx.setStorage({
         key: "user",
         data: user
