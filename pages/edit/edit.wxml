@@ -3,97 +3,150 @@ class="edit_wrapper"
 style="background-image: url({{profile.background}})">
   <view 
   class="edit_user-img" 
-  style="background-image: url({{profile.avatar}})">
+  style="background-image: url({{profile.avatar}})"
+  bindtap="chooseAvatar">
   </view>
 
   <view class="edit_info-container">
     <view class="edit_info-container-title">Personal Information</view>
-    <van-cell-group>
+    <van-cell-group
+    id="personalInfo">
       <van-field
-        label="Name"
-        value="{{profile.name}}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateProfile"
+      data-name="name"
+      label="Name"
+      value="{{profile.name}}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Title"
-        value="{{ profile.title }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateProfile"
+      data-name="title"
+      label="Title"
+      value="{{ profile.title }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Location"
-        value="{{ profile.location }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateProfile"
+      data-name="location"
+      label="Location"
+      value="{{ profile.location }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Phone"
-        type="digit"
-        value="{{ profile.phone }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateProfile"
+      data-name="phone"
+      label="Phone"
+      type="digit"
+      value="{{ profile.phone }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Email"
-        value="{{ profile.email }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateProfile"
+      data-name="email"
+      label="Email"
+      value="{{ profile.email }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="WeChat"
-        value="{{ profile.wechat }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateProfile"
+      data-name="wechat"
+      label="WeChat"
+      value="{{ profile.wechat }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Bio"
-        fixed="true"
-        type="textarea"
-        value="{{ profile.bio }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateProfile"
+      data-name="bio"
+      label="Bio"
+      fixed="true"
+      type="textarea"
+      value="{{ profile.bio }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
+      <van-button
+      data-table="personalInformation"
+      slot="button"
+      bind:click="updateProfile"
+      type="info"
+      custom-class="edit_btn">
+        Update
+      </van-button>
     </van-cell-group>
   </view>
 
   <view 
   wx:for="{{experience}}" 
-  wx:key="{{experience.id}}" 
+  wx:key="{{item.id}}" 
   class="edit_info-container">
     <view class="edit_info-container-title">Experience</view>
     <van-cell-group>
       <van-field
-        label="Company Name"
-        value="{{experience.company_name}}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateExperience"
+      data-name="company_name"
+      label="Company Name"
+      value="{{item.company_name}}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Position"
-        value="{{ experience.position }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateExperience"
+      data-name="position"
+      label="Position"
+      value="{{ item.position }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Start Date"
-        value="{{ experience.start_date }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateExperience"
+      data-name="start_date"
+      label="Start Date"
+      value="{{ item.start_date }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="End Date"
-        value="{{ experience.end_date }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateExperience"
+      data-name="end_date"
+      label="End Date"
+      value="{{ item.end_date }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
       <van-field
-        label="Description"
-        type="textarea"
-        value="{{ experience.description }}"
-        placeholder="Insert information here"
-        bind:change="onChange"
+      data-group="updateExperience"
+      data-name="description"
+      label="Description"
+      type="textarea"
+      value="{{ item.description }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
       />
+      
+      <!-- Update Btn -->
+      <van-button
+      data-id="{{item.id}}"
+      bindtap="updateExperience"
+      plain
+      hairline
+      type="info"
+      custom-class="edit_btn">Update</van-button>
+
+      <!-- Delete Btn -->
+      <van-button
+      data-id="{{item.id}}"
+      bindtap="deleteExperience"
+      plain
+      hairline
+      type="danger"
+      custom-class="edit_btn"
+      >Delete</van-button>
     </van-cell-group>
   </view>
 
@@ -101,5 +154,5 @@ style="background-image: url({{profile.background}})">
   bindtap="addNewExperience" 
   type="default" 
   custom-class="edit_add-btn">Add New Experience</van-button>
-
 </view>
+<van-toast id="van-toast" />

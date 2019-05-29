@@ -45,3 +45,7 @@
   border-radius: 2px;
   margin-bottom: 20px;
 }
+
+.edit_btn {
+  width: 100%;
+}

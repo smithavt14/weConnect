@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "vant-weapp": "^0.5.13"
-  }
+  },
+  "name": "weconnect",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smithavt14/weConnect.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smithavt14/weConnect/issues"
+  },
+  "homepage": "https://github.com/smithavt14/weConnect#readme",
+  "description": ""
 }
