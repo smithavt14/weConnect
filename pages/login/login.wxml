@@ -1,7 +1,13 @@
 <view class="login_wrapper">
+  <image 
+  src="/assets/images/handshake.png" 
+  class="login_img">
+  </image>
+  <view class="login_title"><text id="login_title-bold">we</text>Connect</view>
+  <view class="login_subtitle">Create professional, shareable profiles at the touch of a button</view>
   <button 
     class="login_btn" 
-    type="primary" 
+    type="default" 
     wx:if="{{!user}}" 
     bindgetuserinfo="userLogin" 
     open-type="getUserInfo">Login

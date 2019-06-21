@@ -2,6 +2,7 @@ import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
 
 Page({
   data: {
+    disableBtn: true,
     user: null,
     profile: null,
     experience: null,
@@ -9,6 +10,7 @@ Page({
     updateProfile: null,
     updateExperience: null,
     updateEducation: null,
+    chooseBackground: false,
     backgroundImages: ['https://cloud-minapp-27532.cloud.ifanrusercontent.com/1hU3JlR3qdI7ihhh.png', 'https://cloud-minapp-27532.cloud.ifanrusercontent.com/1hU3Jlj0b53ZoWxO.png', 'https://cloud-minapp-27532.cloud.ifanrusercontent.com/1hU3tom2f94O95Xj.png', 'https://cloud-minapp-27532.cloud.ifanrusercontent.com/1hU3toD51DPYYaSa.png']
   },
 
@@ -43,7 +45,8 @@ Page({
     Profile.setQuery(query).expand(['user']).find().then(res => {
       let profile = res.data.objects[0]
       this.setData({
-        profile: profile
+        profile: profile, 
+        disableBtn: true
       })
       this.getExperience(profile)
       this.getEducation(profile)
@@ -97,6 +100,22 @@ Page({
     })
   },
 
+  addNewEducation() {
+    let Profile = new wx.BaaS.TableObject('profile')
+    let profile = Profile.getWithoutData(this.data.profile.id)
+
+    let Education = new wx.BaaS.TableObject('education')
+    let education = Education.create()
+
+    education.set('profile', profile)
+
+    education.save().then(res => {
+      this.getUserProfile(this.data.user)
+    }, err => {
+      console.log(err)
+    })
+  },
+
   chooseAvatar() {
     let self = this
     wx.chooseImage({
@@ -127,7 +146,8 @@ Page({
 
   updateValue(e) {
     this.setData({
-      [`${e.target.dataset.group}.${e.target.dataset.name}`]: e.detail
+      [`${e.target.dataset.group}.${e.target.dataset.name}`]: e.detail,
+      disableBtn: false
     })
   },
 
@@ -152,7 +172,22 @@ Page({
   },
 
   updateEducation(e) {
+    let Education = new wx.BaaS.TableObject('education')
+    let education = Education.getWithoutData(e.target.dataset.id)
+    education.set(this.data.updateEducation)
+    education.update().then(res => {
+      this.getUserProfile(this.data.user)
+      Toast.success('Success!')
+    })
+  },
 
+  deleteEducation(e) {
+    let Education = new wx.BaaS.TableObject('education')
+    Education.delete(e.target.dataset.id).then(res => {
+      console.log(res)
+      this.getUserProfile(this.data.user)
+      Toast.success('Success!')
+    })
   },
 
   deleteExperience(e) {

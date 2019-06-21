@@ -2,13 +2,32 @@
   "pages": [
     "pages/login/login",
     "pages/profile/profile",
-    "pages/edit/edit"
+    "pages/edit/edit",
+    "pages/connections/connections"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#F3F8FD",
+    "navigationBarTitleText": "weConnect",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "84BCDA", 
+    "selectedColor": "027BCE",
+    "list": [
+      {
+        "pagePath": "pages/connections/connections",
+        "text": "人脉",
+        "iconPath": "/assets/images/connections.png",
+        "selectedIconPath": "/assets/images/connections-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "名片",
+        "iconPath": "/assets/images/profile.png",
+        "selectedIconPath": "/assets/images/profile-active.png"
+      }
+    ]
   },
   "plugins": {
     "sdkPlugin": {

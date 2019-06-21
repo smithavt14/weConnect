@@ -64,23 +64,23 @@ style="background-image: url({{profile.background}})">
       data-group="updateProfile"
       data-name="bio"
       label="Bio"
-      fixed="true"
       type="textarea"
       value="{{ profile.bio }}"
+      input-class="edit_bio"
       placeholder="Insert information here"
       bind:change="updateValue"
       />
       <van-button
       data-table="personalInformation"
-      slot="button"
-      bind:click="updateProfile"
+      bindtap="updateProfile"
       type="info"
-      custom-class="edit_btn">
-        Update
-      </van-button>
+      disabled="{{ disableBtn }}"
+      custom-class="edit_btn">Update</van-button>
+      
     </van-cell-group>
   </view>
 
+  <!-- Experience -->
   <view 
   wx:for="{{experience}}" 
   wx:key="{{item.id}}" 
@@ -131,10 +131,9 @@ style="background-image: url({{profile.background}})">
       
       <!-- Update Btn -->
       <van-button
-      data-id="{{item.id}}"
+      data-id="{{ item.id }}"
+      disabled="{{ disableBtn }}"
       bindtap="updateExperience"
-      plain
-      hairline
       type="info"
       custom-class="edit_btn">Update</van-button>
 
@@ -142,17 +141,81 @@ style="background-image: url({{profile.background}})">
       <van-button
       data-id="{{item.id}}"
       bindtap="deleteExperience"
-      plain
-      hairline
       type="danger"
       custom-class="edit_btn"
       >Delete</van-button>
     </van-cell-group>
   </view>
 
+  <!-- Education -->
+  <view 
+  wx:for="{{education}}" 
+  wx:key="{{item.id}}" 
+  class="edit_info-container">
+    <view class="edit_info-container-title">Education</view>
+    <van-cell-group>
+      <van-field
+      data-group="updateEducation"
+      data-name="school_name"
+      label="School Name"
+      value="{{item.school_name}}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
+      />
+      <van-field
+      data-group="updateEducation"
+      data-name="major"
+      label="Major"
+      value="{{ item.major }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
+      />
+      <van-field
+      data-group="updateEducation"
+      data-name="graduation_date"
+      label="Graduation Date"
+      value="{{ item.graduation_date }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
+      />
+      <van-field
+      data-group="updateEducation"
+      data-name="description"
+      label="Description"
+      type="textarea"
+      value="{{ item.description }}"
+      placeholder="Insert information here"
+      bind:change="updateValue"
+      />
+      
+      <!-- Update Btn -->
+      <van-button
+      data-id="{{ item.id }}"
+      disabled="{{ disableBtn }}"
+      bindtap="updateEducation"
+      type="info"
+      custom-class="edit_btn">Update</van-button>
+
+      <!-- Delete Btn -->
+      <van-button
+      data-id="{{item.id}}"
+      bindtap="deleteEducation"
+      type="danger"
+      custom-class="edit_btn"
+      >Delete</van-button>
+    </van-cell-group>
+  </view>
+
+  <!-- Add new experience -->
   <van-button 
   bindtap="addNewExperience" 
   type="default" 
   custom-class="edit_add-btn">Add New Experience</van-button>
+  
+  <!-- Add new education -->
+  <van-button 
+  bindtap="addNewEducation" 
+  type="default" 
+  custom-class="edit_add-btn">Add New Education</van-button>
 </view>
 <van-toast id="van-toast" />

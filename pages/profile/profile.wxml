@@ -1,38 +1,19 @@
-<view class="profile_wrapper" style="background-image: url({{profile.background}})">
-  <view class="profile_user-img" style="background-image: url({{profile.avatar}})"></view>
-  <view class="profile_info-container">
-    <van-cell-group title="Personal Information">
-      <van-cell title="Name" value="{{profile.name || noInfo}}" />
-      <van-cell title="Title" value="{{profile.title || noInfo}}" />
-      <van-cell title="Location" value="{{profile.location || noInfo}}" />
-      <van-cell title="Phone" value="{{profile.phone || noInfo}}" />
-      <van-cell title="Email" value="{{profile.email || noInfo}}" />
-      <van-cell title="WeChat" value="{{profile.wechat || noInfo}}" />
-    </van-cell-group>
+<view class="profile_wrapper">
+  <view class="profile_header">我的名片</view>
+  <view class="profile_header-underline"></view>
+  <view wx:if="{{profile}}" class="profile_container">
+    <view class="profile_img"></view>
+    <view class="profile_info-container">
+      <view class="profile_user-name">{{profile.name}}</view>
+      <view class="profile_user-position">{{profile.title}}</view>
+    </view>
+    <view class="profile_info-container">
+      <view class="profile_info-header">个人介绍</view>
+      <view class="profile_info-">{{profile.bio}}</view>
+    </view>
   </view>
-
-  <view wx:for="{{experience}}" wx:key="{{experience.id}}" class="profile_info-container">
-    <van-cell-group title="Professional">
-      <van-cell title="Company Name" value="{{item.company_name || noInfo}}" />
-      <van-cell title="Position" value="{{item.position || noInfo}}" />
-      <van-cell title="Position" value="{{item.position || noInfo}}" />
-      <van-cell title="Start Date" value="{{item.start_date || noInfo}}" />
-      <van-cell title="End Date" value="{{item.end_date || noInfo}}" />
-      <van-cell title="Description" value="{{item.description || noInfo}}" />
-    </van-cell-group>
+  <view wx:else class="profile_np-container">
+    <view class="profile_np-title">您没有名片，我们来做一个吧</view>
+    <view bindtap='navigateToEdit' class="profile_np-btn">开始设置</view>
   </view>
-
-  <view wx:for="{{education}}" wx:key="{{education.id}}" class="profile_info-container">
-    <van-cell-group title="Professional">
-      <van-cell title="Company Name" value="{{item.company_name || noInfo}}" />
-      <van-cell title="Position" value="{{item.position || noInfo}}" />
-      <van-cell title="Position" value="{{item.position || noInfo}}" />
-      <van-cell title="Start Date" value="{{item.start_date || noInfo}}" />
-      <van-cell title="End Date" value="{{item.end_date || noInfo}}" />
-      <van-cell title="Description" value="{{item.description || noInfo}}" />
-    </van-cell-group>
-  </view>
-
-  <van-button bindtap="navigateToEdit" type="default" custom-class="profile_edit-btn">Edit Profile</van-button>
-
 </view>

@@ -45,11 +45,10 @@ Page({
       this.setData({
         profile: profile
       })
-      this.getExperience(profile)
-      this.getEducation(profile)
     })
   },
 
+  // Outdated Function -----------
   getExperience(profile) {
     let query = new wx.BaaS.Query()
     let Experience = new wx.BaaS.TableObject('experience')
@@ -65,6 +64,7 @@ Page({
     })
   },
 
+  // Outdated Function -------------
   getEducation(profile) {
     let query = new wx.BaaS.Query()
     let Education = new wx.BaaS.TableObject('education')

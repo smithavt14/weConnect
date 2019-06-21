@@ -49,3 +49,9 @@
 .edit_btn {
   width: 100%;
 }
+
+.edit_bio {
+  height: 100px !important;
+  word-break: keep-all !important;
+  
+}
