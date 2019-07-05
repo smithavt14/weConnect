@@ -1,1 +1,7 @@
-/* pages/connections/connections.wxss */
+.connections_wrapper {
+  background: #F3F8FD;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+}

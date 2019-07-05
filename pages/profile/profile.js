@@ -8,7 +8,6 @@ Page({
   },
 
   // Custom Functions
-
   getCurrentUser() {
     let self = this
     return new Promise(resolve => {
@@ -45,6 +44,14 @@ Page({
       this.setData({
         profile: profile
       })
+    })
+  },
+
+  setClipboard(e) {
+    let id = e.target.dataset.id
+    let self = this
+    wx.setClipboardData({
+      data: self.data.profile[`${id}`],
     })
   },
 

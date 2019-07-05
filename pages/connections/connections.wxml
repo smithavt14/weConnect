@@ -1,2 +1,3 @@
-<!--pages/connections/connections.wxml-->
-<text>pages/connections/connections.wxml</text>
+<view class="connections_wrapper">
+  
+</view>
