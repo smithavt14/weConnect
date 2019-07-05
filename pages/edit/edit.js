@@ -48,71 +48,6 @@ Page({
         profile: profile, 
         disableBtn: true
       })
-      this.getExperience(profile)
-      this.getEducation(profile)
-    })
-  },
-
-  getExperience(profile) {
-    let query = new wx.BaaS.Query()
-    let Experience = new wx.BaaS.TableObject('experience')
-    let Profile = new wx.BaaS.TableObject('profile')
-
-    query.compare('profile', '=', Profile.getWithoutData(profile.id))
-    Experience.setQuery(query).expand(['profile']).find().then(res => {
-      let experience = res.data.objects
-      console.log(experience)
-      this.setData({
-        experience: experience
-      })
-    })
-  },
-
-  getEducation(profile) {
-    let query = new wx.BaaS.Query()
-    let Education = new wx.BaaS.TableObject('education')
-    let Profile = new wx.BaaS.TableObject('profile')
-
-    query.compare('profile', '=', Profile.getWithoutData(profile.id))
-    Education.setQuery(query).expand(['profile']).find().then(res => {
-      let education = res.data.objects
-      console.log(education)
-      this.setData({
-        education: education
-      })
-    })
-  },
-
-  addNewExperience() {
-    let Profile = new wx.BaaS.TableObject('profile')
-    let profile = Profile.getWithoutData(this.data.profile.id)
-
-    let Experience = new wx.BaaS.TableObject('experience')
-    let experience = Experience.create()
-
-    experience.set('profile', profile)
-
-    experience.save().then(res => {
-      console.log(res)
-      this.getUserProfile(this.data.user)
-    }, err => {
-      console.log(err)
-    })
-  },
-
-  addNewEducation() {
-    let Profile = new wx.BaaS.TableObject('profile')
-    let profile = Profile.getWithoutData(this.data.profile.id)
-
-    let Education = new wx.BaaS.TableObject('education')
-    let education = Education.create()
-
-    education.set('profile', profile)
-
-    education.save().then(res => {
-      this.getUserProfile(this.data.user)
-    }, err => {
-      console.log(err)
     })
   },
 
@@ -152,51 +87,18 @@ Page({
   },
 
   updateProfile(e) {
-    let Profile = new wx.BaaS.TableObject('profile')
-    let userProfile = Profile.getWithoutData(this.data.profile.id)
-    userProfile.set(this.data.updateProfile)
-    userProfile.update().then(res => {
-      this.getUserProfile(this.data.user)
-      Toast.success('Success!')
-    })
-  },
-
-  updateExperience(e) {
-    let Experience = new wx.BaaS.TableObject('experience')
-    let experience = Experience.getWithoutData(e.target.dataset.id)
-    experience.set(this.data.updateExperience)
-    experience.update().then(res => {
-      this.getUserProfile(this.data.user)
-      Toast.success('Success!')
-    })
-  },
-
-  updateEducation(e) {
-    let Education = new wx.BaaS.TableObject('education')
-    let education = Education.getWithoutData(e.target.dataset.id)
-    education.set(this.data.updateEducation)
-    education.update().then(res => {
-      this.getUserProfile(this.data.user)
-      Toast.success('Success!')
-    })
-  },
-
-  deleteEducation(e) {
-    let Education = new wx.BaaS.TableObject('education')
-    Education.delete(e.target.dataset.id).then(res => {
-      console.log(res)
-      this.getUserProfile(this.data.user)
-      Toast.success('Success!')
-    })
-  },
-
-  deleteExperience(e) {
-    let Experience = new wx.BaaS.TableObject('experience')
-    Experience.delete(e.target.dataset.id).then(res => {
-      console.log(res)
-      this.getUserProfile(this.data.user)
-      Toast.success('Success!')
-    })
+    if (!this.data.disableBtn) {
+      let Profile = new wx.BaaS.TableObject('profile')
+      let userProfile = Profile.getWithoutData(this.data.profile.id)
+      userProfile.set(this.data.updateProfile)
+      userProfile.update().then(res => {
+        this.getUserProfile(this.data.user)
+        Toast.success('Success!')
+        wx.switchTab({
+          url: '/pages/profile/profile'
+        })
+      })
+    }
   },
 
   // LifeCycle Functions

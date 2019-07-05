@@ -1,23 +1,62 @@
-.edit_wrapper {
-  background-size: contain;
-  background-repeat: repeat-y;
-  min-height: 100vh;
+.edit {
+  background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
   width: 100vw;
+  min-height: 100vh;
+  color: #252525;
+}
+
+.edit .header {
+  font-size: 20px;
+  margin: 10px 0 5px 5%;
+  color: #252525;
+}
+
+.edit .header-underline {
+  height: 3px;
+  width: 150px;
+  background: #252525;
+  margin-left: 5%;
+}
+
+.edit .profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: calc(100vh - 110px);
+  overflow: scroll;
+  box-sizing: border-box;
 }
 
-.edit_user-img {
+.edit .profile-container .user-img {
   height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  margin: 20px 0;
+  width: 90%;
+  border-radius: 2px;
+  background: gray;
+  background-position: left;
   background-size: cover;
-  background-position: center;
+  margin: 20px 0;
+  position: relative;
+  flex-shrink: 0;
 }
 
-.edit_info-container {
+.edit .profile-container .user-img .choose-img-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: white;
+  height: 50px;
+  width: 50px;
+  color: black;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.edit .info-container {
   margin-bottom: 20px;
   width: 90%;
   background: white;
@@ -32,7 +71,7 @@
   border-radius: 2px;
 }
 
-.edit_info-container-title {
+.edit .info-container .title {
   font-size: 14px;
   color: rgba(0,0,0,0.5);
   margin: 10px 0 0 12px;
@@ -46,12 +85,36 @@
   margin-bottom: 20px;
 }
 
-.edit_btn {
+.edit .fixed-nav {
+  background: white;
+  position: fixed;
+  bottom: 0;
+  height: 75px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-top: 1px solid rgba(0,0,0, 0.25);
+}
+
+.edit .fixed-nav .save-btn {
+  display: flex;
+  width: 90%;
+  height: 50px;
+  background: #252525;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+}
+
+.disabled {
+  background: rgba(37, 37, 37, .5) !important;
 }
 
 .edit_bio {
   height: 100px !important;
-  word-break: keep-all !important;
-  
+  word-break: keep-all !important;  
 }

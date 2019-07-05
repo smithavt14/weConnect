@@ -1,39 +1,39 @@
-<view class="profile_wrapper">
-  <view class="profile_header">我的名片</view>
-  <view class="profile_header-underline"></view>
-  <view wx:if="{{profile}}" class="profile_container">
-    <view class="profile_img" style="background-image: url({{profile.avatar}})"></view>
-    <view class="profile_info-container">
-      <view class="profile_user-name">{{profile.name}}</view>
-      <view class="profile_user-position">{{profile.title}} | {{profile.company}}</view>
+<view class="profile">
+  <view class="header">我的名片</view>
+  <view class="header-underline"></view>
+  <view wx:if="{{profile}}" class="profile-container">
+    <view class="img" style="background-image: url({{profile.avatar}})"></view>
+    <view class="info-container">
+      <view class="user-name">{{profile.name}}</view>
+      <view class="user-position">{{profile.title}} | {{profile.company}}</view>
     </view>
-    <view class="profile_info-container">
-      <view class="profile_info-header">个人介绍</view>
-      <view class="profile_info-content">{{profile.bio}}</view>
+    <view class="info-container">
+      <view class="info-header">个人介绍</view>
+      <view class="info-content">{{profile.bio}}</view>
     </view>
-    <view class="profile_info-container">
-      <view class="profile_info-header">联系方式</view>
-      <view class="profile_contact-container">
-        <view class="profile_contact-box">
+    <view class="info-container">
+      <view class="info-header">联系方式</view>
+      <view class="contact-container">
+        <view class="contact-box">
           <image 
           src="/assets/images/wechat.svg" 
-          class="profile_contact-icon" 
+          class="contact-icon" 
           data-id="wechat"
           bindtap="setClipboard">
           </image>
         </view>
-        <view class="profile_contact-box">
+        <view class="contact-box">
           <image 
           src="/assets/images/phone.svg" 
-          class="profile_contact-icon" 
+          class="contact-icon" 
           data-id="phone"
           bindtap="setClipboard">
           </image>
         </view>
-        <view class="profile_contact-box">
+        <view class="contact-box">
           <image 
           src="/assets/images/email.svg" 
-          class="profile_contact-icon" 
+          class="contact-icon" 
           data-id="email"
           bindtap="setClipboard">
           </image>
@@ -41,8 +41,10 @@
       </view>
     </view>
   </view>
-  <view wx:else class="profile_np-container">
-    <view class="profile_np-title">您没有名片，我们来做一个吧</view>
-    <view bindtap='navigateToEdit' class="profile_np-btn">开始设置</view>
+
+  <!-- User Doesn't Have Profile -->
+  <view wx:else class="np-container">
+    <view class="np-title">您没有名片，我们来做一个吧</view>
+    <view bindtap='navigateToEdit' class="np-btn">开始设置</view>
   </view>
 </view>
